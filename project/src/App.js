@@ -15,13 +15,13 @@ function App() {
   const [error, setError] = useState(null);
 
   const handleSearch = useCallback(async () => {
-    if (!query) return;
+    if (!query) return;  // Не делаем запрос, если пустой запрос
 
     setLoading(true);
     setError(null);
     try {
       const data = await fetchBooks(query, category, sort, startIndex);
-      setBooks((prevBooks) => [...prevBooks, ...data.items]); // Добавляем книги в список
+      setBooks(data.items || []); // Обновляем список книг
       setTotalItems(data.totalItems);
       setLoading(false);
     } catch (err) {
@@ -31,14 +31,8 @@ function App() {
   }, [query, category, sort, startIndex]);
 
   const loadMoreBooks = () => {
-    setStartIndex((prevIndex) => prevIndex + 30); // Пагинация: увеличиваем индекс
+    setStartIndex((prevIndex) => prevIndex + 30); // Пагинация
   };
-
-  useEffect(() => {
-    if (query) {
-      handleSearch();
-    }
-  }, [query, category, sort, startIndex, handleSearch]);
 
   return (
     <div className="container">
@@ -49,6 +43,7 @@ function App() {
         setCategory={setCategory}
         sort={sort}
         setSort={setSort}
+        onSearch={handleSearch} // Передаем функцию поиска
       />
       {loading && <div>Загрузка...</div>}
       {error && <div className="error">{error}</div>}

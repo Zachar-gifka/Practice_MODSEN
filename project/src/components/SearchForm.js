@@ -1,12 +1,20 @@
 import React from 'react';
 
-const SearchForm = ({ query, setQuery, category, setCategory, sort, setSort }) => {
+const SearchForm = ({ query, setQuery, category, setCategory, sort, setSort, onSearch }) => {
+  // Функция для обработки нажатия клавиши
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      onSearch();  // Запускать поиск только при нажатии Enter
+    }
+  };
+
   return (
     <div className="search-form">
       <input
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={handleKeyPress} // Обработчик нажатия клавиши
         placeholder="Поиск книг..."
         className="form-control"
       />
@@ -19,7 +27,7 @@ const SearchForm = ({ query, setQuery, category, setCategory, sort, setSort }) =
         <option value="art">art</option>
         <option value="biography">biography</option>
         <option value="computers">computers</option>
-        <option value="history">history</option>
+        <option value="History">history</option>
         <option value="medical">medical</option>
         <option value="poetry">poetry</option>
       </select>

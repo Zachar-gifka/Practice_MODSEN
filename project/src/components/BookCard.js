@@ -5,13 +5,13 @@ const BookCard = ({ book }) => {
   const { title, authors, categories, imageLinks } = volumeInfo;
 
   return (
-    <div className="col-md-4 col-sm-6 mb-4"> 
-      <div className="card h-100"> 
+    <div className="col-md-4 col-sm-6 mb-4">
+      <div className="card h-100">
         {imageLinks && imageLinks.thumbnail && (
           <img
             src={imageLinks.thumbnail}
             alt={title}
-            className="card-img-top" 
+            className="card-img-top"
           />
         )}
         <div className="card-body">
@@ -29,4 +29,3 @@ const BookCard = ({ book }) => {
 };
 
 export default BookCard;
-
