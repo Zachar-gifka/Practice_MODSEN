@@ -1,10 +1,9 @@
 import React from 'react';
 
 const SearchForm = ({ query, setQuery, category, setCategory, sort, setSort, onSearch }) => {
-  // Функция для обработки нажатия клавиши
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
-      onSearch();  // Запускать поиск только при нажатии Enter
+      onSearch(); // Запуск поиска только при нажатии клавиши Enter
     }
   };
 
@@ -13,14 +12,14 @@ const SearchForm = ({ query, setQuery, category, setCategory, sort, setSort, onS
       <input
         type="text"
         value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        onKeyDown={handleKeyPress} // Обработчик нажатия клавиши
+        onChange={(e) => setQuery(e.target.value)} // Только обновляем состояние query, но не вызываем поиск
+        onKeyDown={handleKeyPress} // Запуск поиска только при нажатии клавиши Enter
         placeholder="Поиск книг..."
         className="form-control"
       />
       <select
         value={category}
-        onChange={(e) => setCategory(e.target.value)}
+        onChange={(e) => setCategory(e.target.value)} // Обновляем фильтр категории
         className="form-control"
       >
         <option value="all">all</option>
@@ -33,7 +32,7 @@ const SearchForm = ({ query, setQuery, category, setCategory, sort, setSort, onS
       </select>
       <select
         value={sort}
-        onChange={(e) => setSort(e.target.value)}
+        onChange={(e) => setSort(e.target.value)} // Обновляем фильтр сортировки
         className="form-control"
       >
         <option value="relevance">relevance</option>

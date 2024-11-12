@@ -56,17 +56,27 @@ const BookList = () => {
         sort={sort}
         setSort={setSort}
       />
-      <div className="row">
+      
+      <div className="row g-4">
         {loading ? (
-          <div>Загрузка...</div>
+          <div className="col-12 text-center">
+            <div className="spinner-border text-primary" role="status">
+              <span className="sr-only">Загрузка...</span>
+            </div>
+          </div>
         ) : (
           books.map((book) => (
-            <BookCard key={book.id} book={book} />
+            <div className="col-md-3 col-sm-6" style={{margin: 15}} key={book.id}>
+              <BookCard book={book} />
+            </div>
           ))
         )}
       </div>
+
       {nextPageToken && !loading && (
-        <Pagination onLoadMore={handleLoadMore} />
+        <div className="d-flex justify-content-center mt-4">
+          <Pagination onLoadMore={handleLoadMore} />
+        </div>
       )}
     </div>
   );
