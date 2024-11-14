@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'; // Для получения параметра id из URL
+import { useParams, Link } from 'react-router-dom'; // Для получения параметра id из URL
 import { fetchBookById } from '../utils/api'; // Функция для получения книги по id
+import { Button } from 'react-bootstrap';
 
 const BookDetail = () => {
   const { id } = useParams(); // Получаем id книги из URL
@@ -34,7 +35,9 @@ const BookDetail = () => {
   const { title, authors, categories, description, imageLinks } = volumeInfo;
 
   return (
-    <div className="book-detail">
+    <body style={{ backgroundColor: '#2e2d2d', minHeight: '100vh', padding: '20px'}}>
+    <div className = "block" style={{margin: '15px 300px 15px 300px', border: '2px solid black' }}>
+    <div className="book-detail" style={{ display: 'grid', placeItems: 'center', backgroundColor: '#fcf3f2', padding: '15px' }}>
       <h1>{title}</h1>
       {imageLinks?.thumbnail && (
         <img
@@ -43,10 +46,15 @@ const BookDetail = () => {
           style={{ width: '200px', height: 'auto' }}
         />
       )}
-      <p><strong>Авторы:</strong> {authors?.join(', ') || 'Неизвестно'}</p>
+      <p><strong>Автор(ы):</strong> {authors?.join(', ') || 'Неизвестно'}</p>
       <p><strong>Категория:</strong> {categories?.join(', ') || 'Не указано'}</p>
       <p><strong>Описание:</strong> {description || 'Описание отсутствует'}</p>
+      <Link to="/" style={{ textDecoration: 'none', alignContent: 'center' }}>
+            <Button>Перейти на главную страницу</Button>
+        </Link>
     </div>
+    </div>
+    </body>
   );
 };
 

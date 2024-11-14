@@ -35,13 +35,13 @@ const BookCard = ({ book }) => {
           {title}
         </h5>
         <p className="card-text">
-          <strong>Авторы: </strong>{authors ? authors.join(', ') : 'Неизвестно'}
+          <strong>Authors: </strong>{authors ? authors.join(', ') : 'Неизвестно'}
         </p>
         <p className="card-text">
-          <strong>Категории: </strong>{categories ? categories[0] : 'Не указано'}
+          <strong>Categories: </strong>{categories ? categories[0] : 'Не указано'}
         </p>
         <Link to={`/book/${book.id}`} className="btn btn-primary">
-          Посмотреть подробнее
+        View more details
         </Link>
       </div>
     </div>

@@ -33,14 +33,14 @@ function SearchPage({ query, setQuery, category, setCategory, sort, setSort, boo
         />
       </div>
 
-      {loading && <div>Загрузка...</div>}
+      {loading && <div style={{ textAlign: 'center' }}>loading...</div>}
       {error && <div className="error">{error}</div>}
 
       <div className="results-section" style={{ padding: '20px', width: '100%' }}>
-        <h3>{totalItems} результатов</h3>
+        <h3 style={{ textAlign: 'center' }}>{totalItems} results</h3>
         <div className="row" style={{ margin: '0' }}>
           {books.map((book) => (
-            <div className="col-md-4" key={book.id} style={{ padding: '0' }}>
+            <div className="col-md-4" key={book.id} style={{ padding: '0'}}>
               <BookCard book={book} />
             </div>
           ))}
@@ -75,7 +75,7 @@ function App() {
       setStartIndex(30);
       setLoading(false);
     } catch (err) {
-      setError('Произошла ошибка при загрузке данных.');
+      setError('ERROR loading data.');
       setLoading(false);
     }
   }, [query, category, sort]);
@@ -88,7 +88,7 @@ function App() {
       setStartIndex((prevIndex) => prevIndex + 30);
       setLoading(false);
     } catch (err) {
-      setError('Произошла ошибка при загрузке данных.');
+      setError('ERROR loading data.');
       setLoading(false);
     }
   };

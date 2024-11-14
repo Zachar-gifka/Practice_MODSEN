@@ -19,23 +19,23 @@ export const fetchBooks = async (query, category, sort, startIndex = 0) => {
       params.q = `${query}+subject:${category}`;
     }
 
-    console.log('Запрос к API:', params);
+    console.log('API request:', params); //Запрос к API
 
     const response = await axios.get(API_URL, { params });
 
-    console.log('Ответ от API:', response.data);
+    console.log('Response from API:', response.data); //Ответ от API
 
     return response.data; // Возвращаем данные
   } catch (error) {
-    console.error('Ошибка при загрузке данных с Google Books API:', error);
+    console.error('ERROR loading data from Google Books API:', error); //Ошибка при загрузке данных с Google Books API:
 
     if (error.response) {
-      console.error('Ответ от сервера с ошибкой:', error.response.data);
+      console.error('Response from the server with an error:', error.response.data); //Ответ от сервера с ошибкой:
     } else {
-      console.error('Ошибка без ответа от сервера:', error.message);
+      console.error('ERROR without response from server:', error.message); //Ошибка без ответа от сервера:
     }
 
-    throw new Error('Не удалось загрузить книги');
+    throw new Error('FAILED to load books'); //Не удалось загрузить книги
   }
 };
 
@@ -50,14 +50,14 @@ export const fetchBookById = async (id) => {
 
     return response.data; // Возвращаем данные о книге
   } catch (error) {
-    console.error('Ошибка при загрузке данных о книге:', error);
+    console.error('ERROR loading book data:', error); //Ошибка при загрузке данных о книге:
 
     if (error.response) {
-      console.error('Ответ от сервера с ошибкой:', error.response.data);
+      console.error('Server response with error:', error.response.data); //Ответ от сервера с ошибкой
     } else {
-      console.error('Ошибка без ответа от сервера:', error.message);
+      console.error('Error: no response from server:', error.message); //Ошибка без ответа от сервера
     }
 
-    throw new Error('Не удалось загрузить данные книги');
+    throw new Error('Failed to load book data'); //Не удалось загрузить данные книги
   }
 };

@@ -4,7 +4,7 @@ const Pagination = ({ onLoadMore }) => {
   return (
     <div className="pagination mt-4">
       <button className="btn btn-primary" onClick={onLoadMore}>
-        Загрузить больше
+        Load More
       </button>
     </div>
   );
