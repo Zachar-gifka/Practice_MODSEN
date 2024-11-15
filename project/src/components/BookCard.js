@@ -41,7 +41,7 @@ const BookCard = ({ book }) => {
           <strong>Categories: </strong>{categories ? categories[0] : 'Не указано'}
         </p>
         <Link to={`/book/${book.id}`} className="btn btn-primary">
-        View more details
+          View more details
         </Link>
       </div>
     </div>

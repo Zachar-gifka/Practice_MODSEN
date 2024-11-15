@@ -4,7 +4,7 @@ import SearchForm from "./SearchForm";
 import BookCard from "./BookCard";
 import Pagination from "./Pagination";
 
-const API_KEY = "AIzaSyB-PJvJSqibUZMXVWLz6OYxN6LVXS170hI"; // Ваш ключ API
+const API_KEY = "AIzaSyB-PJvJSqibUZMXVWLz6OYxN6LVXS170hI";
 const API_URL = "https://www.googleapis.com/books/v1/volumes";
 
 const BookList = () => {
